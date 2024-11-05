@@ -21,12 +21,6 @@ export const ListHeader = () => {
     <View style={[styles.headerContainer]}>
       <View style={styles.headerTop}>
         <View style={styles.avatarContainer}>
-          <FontAwesome
-            style={styles.avatarIcon}
-            name="book"
-            size={25}
-            color="grey"
-          />
           <Text style={styles.avatarText}>Honya</Text>
         </View>
         <View style={styles.headerRight}>
@@ -51,7 +45,11 @@ export const ListHeader = () => {
             onPress={() => handleSinout()}
             style={styles.signOutButton}
           >
-            <FontAwesome name="sign-out" size={25} color="grey" />
+            <FontAwesome
+              name="sign-out"
+              size={25}
+              color="rgba(0, 51, 102, 1)"
+            />
           </TouchableOpacity>
         </View>
       </View>

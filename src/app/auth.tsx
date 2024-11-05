@@ -59,7 +59,7 @@ export default function Auth() {
   return (
     <ImageBackground
       source={{
-        uri: "https://cdn.jim-nielsen.com/blog/2023/japanese-app-icon-book-0.jpg",
+        uri: "https://d1whtlypfis84e.cloudfront.net/guides/wp-content/uploads/2019/08/08113628/cellphone-device-electronics-699122.jpg",
       }}
       style={styles.backgroundImage}
     >
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   button: {
-    backgroundColor: "rgba(139, 0, 0, 1)",
+    backgroundColor: "rgba(0, 51, 102, 1)",
     padding: 16,
     borderRadius: 8,
     marginBottom: 16,

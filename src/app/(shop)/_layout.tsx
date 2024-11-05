@@ -9,7 +9,13 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
-  return <FontAwesome size={24} style={{ color: "#006600" }} {...props} />;
+  return (
+    <FontAwesome
+      size={24}
+      style={{ color: "rgba(135, 206, 235, 1)" }}
+      {...props}
+    />
+  );
 }
 
 export default function ShopLayout() {
@@ -23,7 +29,7 @@ export default function ShopLayout() {
     <SafeAreaView edges={["top"]} style={styles.safeArea}>
       <Tabs
         screenOptions={{
-          tabBarActiveTintColor: "#006600",
+          tabBarActiveTintColor: "rgba(0, 51, 102, 1)",
           tabBarInactiveTintColor: "gray",
           tabBarLabelStyle: {
             fontSize: 16,
@@ -49,7 +55,7 @@ export default function ShopLayout() {
           name="orders"
           options={{
             tabBarIcon(props) {
-              return <TabBarIcon name="book" {...props} />;
+              return <TabBarIcon name="list" {...props} />;
             },
           }}
         />
