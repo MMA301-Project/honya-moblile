@@ -28,6 +28,9 @@ export default function Auth() {
   const signIn = async (data: zod.infer<typeof authSchema>) => {
     console.log(data);
   };
+  const signUp = async (data: zod.infer<typeof authSchema>) => {
+    console.log(data);
+  };
   return (
     <ImageBackground
       source={{
@@ -98,6 +101,13 @@ export default function Auth() {
           disabled={formState.isSubmitting}
         >
           <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.button, styles.signUpButton]}
+          onPress={handleSubmit(signUp)}
+          disabled={formState.isSubmitting}
+        >
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

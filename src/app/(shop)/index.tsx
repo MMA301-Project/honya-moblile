@@ -6,19 +6,18 @@ import Auth from "../auth";
 
 export default function Home() {
   return (
-    <Auth />
-    // <View>
-    //   <FlatList
-    //     data={PRODUCTS}
-    //     renderItem={({ item }) => <ProductListItem product={item} />}
-    //     keyExtractor={(item) => item.imagesUrl.toString()}
-    //     numColumns={2}
-    //     ListHeaderComponent={ListHeader}
-    //     contentContainerStyle={styles.flatListContent}
-    //     columnWrapperStyle={styles.flatListColumn}
-    //     style={{ paddingHorizontal: 10, paddingVertical: 5 }}
-    //   />
-    // </View>
+    <View>
+      <FlatList
+        data={PRODUCTS}
+        renderItem={({ item }) => <ProductListItem product={item} />}
+        keyExtractor={(item) => item.imagesUrl.toString()}
+        numColumns={2}
+        ListHeaderComponent={ListHeader}
+        contentContainerStyle={styles.flatListContent}
+        columnWrapperStyle={styles.flatListColumn}
+        style={{ paddingHorizontal: 10, paddingVertical: 5 }}
+      />
+    </View>
   );
 }
 
