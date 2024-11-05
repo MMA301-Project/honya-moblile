@@ -1,5 +1,12 @@
 import { Link } from "expo-router";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 export const ListHeader = () => {
   return (
@@ -10,26 +17,31 @@ export const ListHeader = () => {
             source={{ uri: "https://via.placeholder.com/40" }}
             style={styles.avatarImage}
           />
-          <Text style={styles.avatarText}>Hello codewithlari</Text>
+          <Text style={styles.avatarText}>Hi Thang</Text>
         </View>
-        <Link style={styles.cartContainer} href="/cart" asChild>
-          <Pressable>
-            {({ pressed }) => (
-              <View>
-                <FontAwesome
-                  name="shopping-cart"
-                  size={25}
-                  color="gray"
-                  style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                />
+        <View style={styles.headerRight}>
+          <Link style={styles.cartContainer} href="/cart" asChild>
+            <Pressable>
+              {({ pressed }) => (
+                <View>
+                  <FontAwesome
+                    name="shopping-cart"
+                    size={25}
+                    color="gray"
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
 
-                <View style={styles.badgeContainer}>
-                  <Text style={styles.badgeText}>{1}</Text>
+                  <View style={styles.badgeContainer}>
+                    <Text style={styles.badgeText}>{1}</Text>
+                  </View>
                 </View>
-              </View>
-            )}
-          </Pressable>
-        </Link>
+              )}
+            </Pressable>
+          </Link>
+          <TouchableOpacity style={styles.signOutButton}>
+            <FontAwesome name="sign-out" size={25} color="grey" />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.heroContainer}></View>
       <View style={styles.categoriesContainer}></View>
