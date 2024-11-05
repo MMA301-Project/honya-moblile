@@ -1,11 +1,9 @@
 import { Text, View } from "react-native";
 
-const Home = () => {
+export default function Categories() {
   return (
     <View>
-      <Text>Hello Honya</Text>
+      <Text>Categories</Text>
     </View>
   );
-};
-
-export default Home;
+}
