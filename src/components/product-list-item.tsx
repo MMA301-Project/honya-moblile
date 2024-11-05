@@ -1,5 +1,5 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
-import { Product } from "../../../assets/types/product";
+import { Product } from "../../assets/types/product";
 import { Link } from "expo-router";
 
 export const ProductListItem = ({ product }: { product: Product }) => {

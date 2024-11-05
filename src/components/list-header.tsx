@@ -30,7 +30,6 @@ export const ListHeader = () => {
                     color="gray"
                     style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
                   />
-
                   <View style={styles.badgeContainer}>
                     <Text style={styles.badgeText}>{1}</Text>
                   </View>
@@ -43,8 +42,17 @@ export const ListHeader = () => {
           </TouchableOpacity>
         </View>
       </View>
-      <View style={styles.heroContainer}></View>
-      <View style={styles.categoriesContainer}></View>
+      <View style={styles.heroContainer}>
+        <View style={styles.heroContainer}>
+          <Image
+            source={require("../../assets/images/hero.png")}
+            style={styles.heroImage}
+          />
+        </View>
+      </View>
+      <View style={styles.categoriesContainer}>
+        
+      </View>
     </View>
   );
 };
