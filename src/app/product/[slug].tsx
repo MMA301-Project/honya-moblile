@@ -1,5 +1,5 @@
 import { Redirect, Stack, useLocalSearchParams } from "expo-router";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useToast } from "react-native-toast-notifications";
 import { PRODUCTS } from "../../../assets/products";
 import { useCartStore } from "../../store/cart-store";
@@ -32,15 +32,47 @@ const ProductDetail = () => {
           <Text style={styles.price}>Price: ${product.price.toFixed(2)}</Text>
           <Text style={styles.price}>Total Price: ${totalPrice}</Text>
         </View>
+        <FlatList
+          data={product.imagesUrl}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) => (
+            <Image source={item} style={styles.image} />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.imagesContainer}
+        />
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.quantityButton}
+            onPress={decreaseQuantity}
+            disabled={quantity <= 1}
+          >
+            <Text style={styles.quantityButtonText}>-</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.quantity}>{quantity}</Text>
+
+          <TouchableOpacity
+            style={styles.quantityButton}
+            onPress={increaseQuantity}
+            disabled={quantity >= product.maxQuantity}
+          >
+            <Text style={styles.quantityButtonText}>+</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.addToCartButton,
+              { opacity: quantity === 0 ? 0.5 : 1 },
+            ]}
+            onPress={addToCart}
+            disabled={quantity === 0}
+          >
+            <Text style={styles.addToCartText}>Add to Cart</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <FlatList
-        data={product.imagesUrl}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Image source={item} style={styles.image} />}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.imagesContainer}
-      />
     </View>
   );
 };
@@ -84,7 +116,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginRight: 8,
-    marginLeft: 10,
+
     borderRadius: 8,
   },
   buttonContainer: {
