@@ -11,17 +11,23 @@ import {
 import { FontAwesome } from "@expo/vector-icons";
 import { CATEGORIES } from "../../assets/categories";
 import { useCartStore } from "../store/cart-store";
+import { supabase } from "../lib/supabase";
 export const ListHeader = () => {
   const { getItemCount } = useCartStore();
+  const handleSinout = async () => {
+    await supabase.auth.signOut();
+  };
   return (
     <View style={[styles.headerContainer]}>
       <View style={styles.headerTop}>
         <View style={styles.avatarContainer}>
-          <Image
-            source={{ uri: "https://via.placeholder.com/40" }}
-            style={styles.avatarImage}
+          <FontAwesome
+            style={styles.avatarIcon}
+            name="book"
+            size={25}
+            color="grey"
           />
-          <Text style={styles.avatarText}>Hi Thang</Text>
+          <Text style={styles.avatarText}>Honya</Text>
         </View>
         <View style={styles.headerRight}>
           <Link style={styles.cartContainer} href="/cart" asChild>
@@ -41,7 +47,10 @@ export const ListHeader = () => {
               )}
             </Pressable>
           </Link>
-          <TouchableOpacity style={styles.signOutButton}>
+          <TouchableOpacity
+            onPress={() => handleSinout()}
+            style={styles.signOutButton}
+          >
             <FontAwesome name="sign-out" size={25} color="grey" />
           </TouchableOpacity>
         </View>
@@ -78,6 +87,9 @@ export const ListHeader = () => {
   );
 };
 const styles = StyleSheet.create({
+  avatarIcon: {
+    marginRight: 5,
+  },
   headerContainer: {
     gap: 20,
   },
