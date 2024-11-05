@@ -1,9 +1,42 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Redirect, Stack, useLocalSearchParams } from "expo-router";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import { ORDERS } from "../../../../assets/orders";
 
 const OrderDetail = () => {
+  const { slug } = useLocalSearchParams<{ slug: string }>();
+  const order = ORDERS.find((order) => order.slug === slug);
+
+  if (!order) {
+    <Redirect href="/404" />;
+  }
   return (
-    <View>
-      <Text>OrderDetail</Text>
+    <View style={styles.container}>
+      <Stack.Screen options={{ title: `${order?.item}` }} />
+      <Text style={styles.item}>{order?.item}</Text>
+      <Text style={styles.details}>{order?.details}</Text>
+      <View
+        style={
+          (styles.statusBadge,
+          styles[`statusBadge_${order?.status || "Completed"}`])
+        }
+      >
+        <Text style={styles.statusText}>{order?.status}</Text>
+      </View>
+      <Text style={styles.date}>{order?.date}</Text>
+      <Text style={styles.itemsTitle}>Items orders list: </Text>
+      <FlatList
+        data={order?.items || []}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.orderItem}>
+            <Image source={item.heroImage} style={styles.heroImage} />
+            <View style={styles.itemInfo}>
+              <Text style={styles.itemName}>{item.title}</Text>
+              <Text style={styles.itemPrice}>Price: ${item.price}</Text>
+            </View>
+          </View>
+        )}
+      />
     </View>
   );
 };
