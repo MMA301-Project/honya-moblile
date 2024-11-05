@@ -4,7 +4,7 @@ import { PRODUCTS } from "../../assets/products";
 type CartItemType = {
   id: number;
   title: string;
-  heroImage: string;
+  image: any;
   price: number;
   quantity: number;
   maxQuantity: number;

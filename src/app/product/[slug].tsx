@@ -1,5 +1,12 @@
 import { Redirect, Stack, useLocalSearchParams } from "expo-router";
-import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useToast } from "react-native-toast-notifications";
 import { PRODUCTS } from "../../../assets/products";
 import { useCartStore } from "../../store/cart-store";
@@ -17,9 +24,42 @@ const ProductDetail = () => {
   const initialQuantity = cartItem ? cartItem.quantity : 1;
   const [quantity, setQuantity] = useState(initialQuantity);
 
-  const increaseQuantity = () => {};
-  const decreaseQuantity = () => {};
-  const addToCart = () => {};
+  const increaseQuantity = () => {
+    if (quantity < product.maxQuantity) {
+      setQuantity((prev) => prev + 1);
+      incrementItem(product.id);
+    } else {
+      toast.show("Cannot add more than maximum quantity", {
+        type: "warning",
+        placement: "top",
+        duration: 1500,
+      });
+    }
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+      decrementItem(product.id);
+    }
+  };
+
+  const addToCart = () => {
+    addItem({
+      id: product.id,
+      title: product.title,
+      image: product.heroImage,
+      price: product.price,
+      quantity,
+      maxQuantity: product.maxQuantity,
+    });
+    toast.show("Added to cart", {
+      type: "success",
+      placement: "top",
+      duration: 1500,
+    });
+  };
+
   const totalPrice = (product.price * quantity).toFixed(2);
   return (
     <View style={styles.container}>
