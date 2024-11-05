@@ -59,14 +59,14 @@ export default function Auth() {
   return (
     <ImageBackground
       source={{
-        uri: "https://images.pexels.com/photos/682933/pexels-photo-682933.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        uri: "https://cdn.jim-nielsen.com/blog/2023/japanese-app-icon-book-0.jpg",
       }}
       style={styles.backgroundImage}
     >
       <View style={styles.overlay} />
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome</Text>
-        <Text style={styles.subtitle}>Sign in to continue</Text>
+        <Text style={styles.title}>Welcome to Honya</Text>
+        <Text style={styles.subtitle}>Sign in</Text>
         <Controller
           control={control}
           name="email"
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   button: {
-    backgroundColor: "#6a1b9a",
+    backgroundColor: "rgba(139, 0, 0, 1)",
     padding: 16,
     borderRadius: 8,
     marginBottom: 16,
