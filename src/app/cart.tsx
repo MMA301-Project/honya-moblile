@@ -13,10 +13,9 @@ import { StatusBar } from "expo-status-bar";
 type CartItemType = {
   id: number;
   title: string;
-  image: string;
+  image: any;
   price: number;
   quantity: number;
-  maxQuantity: number;
 };
 
 type CartItemProps = {
@@ -34,11 +33,11 @@ const CartItem = ({
 }: CartItemProps) => {
   return (
     <View style={styles.cartItem}>
-      <Image source={{ uri: item.image }} style={styles.itemImage} />
+      <Image source={item.image} style={styles.itemImage}></Image>
       <View style={styles.itemDetails}>
         <Text style={styles.itemTitle}>{item.title}</Text>
         <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
-        <View style={styles.quantityContainer}>
+        <Text style={styles.quantityContainer}>
           <TouchableOpacity
             onPress={() => onDecrement(item.id)}
             style={styles.quantityButton}
@@ -52,9 +51,8 @@ const CartItem = ({
           >
             <Text style={styles.quantityButtonText}>+</Text>
           </TouchableOpacity>
-        </View>
+        </Text>
       </View>
-
       <TouchableOpacity
         onPress={() => onRemove(item.id)}
         style={styles.removeButton}
@@ -76,7 +74,14 @@ export default function Cart() {
       <FlatList
         data={items}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={}
+        renderItem={({ item }) => (
+          <CartItem
+            item={item}
+            onRemove={removeItem}
+            onDecrement={decrementItem}
+            onIncrement={incrementItem}
+          />
+        )}
         style={styles.cartList}
       />
       <View style={styles.footer}>
