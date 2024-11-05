@@ -1,5 +1,5 @@
-import { Redirect, useLocalSearchParams } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { Redirect, Stack, useLocalSearchParams } from "expo-router";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { useToast } from "react-native-toast-notifications";
 import { PRODUCTS } from "../../../assets/products";
 import { useCartStore } from "../../store/cart-store";
@@ -16,9 +16,21 @@ const ProductDetail = () => {
   const cartItem = items.find((item) => item.id === product.id);
   const initialQuantity = cartItem ? cartItem.quantity : 1;
   const [quantity, setQuantity] = useState(initialQuantity);
+
+  const increaseQuantity = () => {};
+  const decreaseQuantity = () => {};
+  const addToCart = () => {};
+  const totalPrice = (product.price * quantity).toFixed(2);
   return (
-    <View>
-      <Text>Product Detail</Text>
+    <View style={styles.container}>
+      <Stack.Screen options={{ title: product.title }} />
+      <Image source={product.heroImage} style={styles.heroImage} />
+      <View style={{ padding: 16, flex: 1 }}>
+        <Text style={styles.title}>{product.title}</Text>
+        <Text style={styles.slug}>{product.slug}</Text>
+        <View style={styles.priceContainer}></View>
+        <Text style={styles.price}>${totalPrice}</Text>
+      </View>
     </View>
   );
 };
