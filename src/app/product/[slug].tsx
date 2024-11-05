@@ -1,5 +1,5 @@
 import { Redirect, Stack, useLocalSearchParams } from "expo-router";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { useToast } from "react-native-toast-notifications";
 import { PRODUCTS } from "../../../assets/products";
 import { useCartStore } from "../../store/cart-store";
@@ -28,9 +28,19 @@ const ProductDetail = () => {
       <View style={{ padding: 16, flex: 1 }}>
         <Text style={styles.title}>{product.title}</Text>
         <Text style={styles.slug}>{product.slug}</Text>
-        <View style={styles.priceContainer}></View>
-        <Text style={styles.price}>${totalPrice}</Text>
+        <View style={styles.priceContainer}>
+          <Text style={styles.price}>Price: ${product.price.toFixed(2)}</Text>
+          <Text style={styles.price}>Total Price: ${totalPrice}</Text>
+        </View>
       </View>
+      <FlatList
+        data={product.imagesUrl}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => <Image source={item} style={styles.image} />}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.imagesContainer}
+      />
     </View>
   );
 };
@@ -74,6 +84,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     marginRight: 8,
+    marginLeft: 10,
     borderRadius: 8,
   },
   buttonContainer: {
