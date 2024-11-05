@@ -26,9 +26,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     avatar_url: string;
     created_at: string | null;
     email: string;
-    expo_notification_token: string | null;
     id: string;
-    stripe_customer_id: string | null;
     type: string | null;
   } | null>(null);
   const [mounting, setMounting] = useState(true);
