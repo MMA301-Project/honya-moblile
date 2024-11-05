@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -64,6 +65,40 @@ export default function Auth() {
             </>
           )}
         />
+        <Controller
+          control={control}
+          name="password"
+          render={({
+            field: { onChange, value, onBlur },
+            fieldState: { error },
+          }) => (
+            <>
+              <TextInput
+                placeholder="Password"
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                placeholderTextColor="#aaa"
+                autoCapitalize="none"
+                secureTextEntry
+                editable={!formState.isSubmitting}
+              ></TextInput>
+              {error && (
+                <Text style={{ color: "red", fontSize: 12 }}>
+                  {error.message}
+                </Text>
+              )}
+            </>
+          )}
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleSubmit(signIn)}
+          disabled={formState.isSubmitting}
+        >
+          <Text style={styles.buttonText}>Sign in</Text>
+        </TouchableOpacity>
       </View>
     </ImageBackground>
   );
