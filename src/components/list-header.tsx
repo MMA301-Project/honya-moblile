@@ -1,5 +1,6 @@
 import { Link } from "expo-router";
 import {
+  FlatList,
   Image,
   Pressable,
   StyleSheet,
@@ -8,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { CATEGORIES } from "../../assets/categories";
 export const ListHeader = () => {
   return (
     <View style={[styles.headerContainer]}>
@@ -51,7 +53,24 @@ export const ListHeader = () => {
         </View>
       </View>
       <View style={styles.categoriesContainer}>
-        
+        <Text style={styles.sectionTitle}>Categories</Text>
+        <FlatList
+          data={CATEGORIES}
+          renderItem={({ item }) => (
+            <Link asChild href={`/categories/${item.slug}`}>
+              <Pressable style={styles.category}>
+                <Image
+                  source={{ uri: item.imageUrl }}
+                  style={styles.categoryImage}
+                />
+                <Text style={styles.categoryText}>{item.name}</Text>
+              </Pressable>
+            </Link>
+          )}
+          keyExtractor={(item) => item.name}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
     </View>
   );
