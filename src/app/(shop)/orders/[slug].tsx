@@ -14,12 +14,7 @@ const OrderDetail = () => {
       <Stack.Screen options={{ title: `${order?.item}` }} />
       <Text style={styles.item}>{order?.item}</Text>
       <Text style={styles.details}>{order?.details}</Text>
-      <View
-        style={
-          (styles.statusBadge,
-          styles[`statusBadge_${order?.status || "Completed"}`])
-        }
-      >
+      <View style={styles.statusBadge}>
         <Text style={styles.statusText}>{order?.status}</Text>
       </View>
       <Text style={styles.date}>{order?.date}</Text>
@@ -62,20 +57,20 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignSelf: "flex-start",
   },
-  statusBadge_Pending: {
-    backgroundColor: "orange",
-  },
-  statusBadge_Completed: {
-    backgroundColor: "green",
-  },
-  statusBadge_Shipped: {
-    backgroundColor: "blue",
-  },
-  statusBadge_InTransit: {
-    backgroundColor: "purple",
-  },
+  // statusBadge_Pending: {
+  //   backgroundColor: "orange",
+  // },
+  // statusBadge_Completed: {
+  //   backgroundColor: "green",
+  // },
+  // statusBadge_Shipped: {
+  //   backgroundColor: "blue",
+  // },
+  // statusBadge_InTransit: {
+  //   backgroundColor: "purple",
+  // },
   statusText: {
-    color: "#fff",
+    color: "rgb(0, 0, 0)",
     fontWeight: "bold",
   },
   date: {

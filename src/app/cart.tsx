@@ -44,7 +44,9 @@ const CartItem = ({
           >
             <Text style={styles.quantityButtonText}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.itemQuantity}>{item.quantity}</Text>
+          <View style={{ paddingHorizontal: 10, height: 20 }}>
+            <Text style={styles.itemQuantity}>{item.quantity}</Text>
+          </View>
           <TouchableOpacity
             onPress={() => onIncrement(item.id)}
             style={styles.quantityButton}
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   itemQuantity: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#666",
   },
   removeButton: {
@@ -171,6 +173,7 @@ const styles = StyleSheet.create({
   quantityContainer: {
     flexDirection: "row",
     alignItems: "center",
+    gap: 10,
   },
   quantityButton: {
     width: 30,
@@ -179,7 +182,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 15,
     backgroundColor: "#ddd",
-    marginHorizontal: 5,
   },
   quantityButtonText: {
     fontSize: 18,

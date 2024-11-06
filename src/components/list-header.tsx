@@ -20,10 +20,7 @@ export const ListHeader = () => {
   return (
     <View style={[styles.headerContainer]}>
       <View style={styles.headerTop}>
-        <View style={styles.avatarContainer}>
-          <Text style={styles.avatarText}>Honya</Text>
-        </View>
-        <View style={styles.headerRight}>
+        <View>
           <Link style={styles.cartContainer} href="/cart" asChild>
             <Pressable>
               {({ pressed }) => (
@@ -41,6 +38,11 @@ export const ListHeader = () => {
               )}
             </Pressable>
           </Link>
+        </View>
+        <View>
+          <Text style={{ fontSize: 24, fontWeight: "bold" }}>Honya</Text>
+        </View>
+        <View style={styles.headerRight}>
           <TouchableOpacity
             onPress={() => handleSinout()}
             style={styles.signOutButton}
@@ -56,7 +58,7 @@ export const ListHeader = () => {
       <View style={styles.heroContainer}>
         <View style={styles.heroContainer}>
           <Image
-            source={require("../../assets/images/hero.png")}
+            source={require("../../assets/images/hero2.jpg")}
             style={styles.heroImage}
           />
         </View>
@@ -68,10 +70,6 @@ export const ListHeader = () => {
           renderItem={({ item }) => (
             <Link asChild href={`/categories/${item.slug}`}>
               <Pressable style={styles.category}>
-                <Image
-                  source={{ uri: item.imageUrl }}
-                  style={styles.categoryImage}
-                />
                 <Text style={styles.categoryText}>{item.name}</Text>
               </Pressable>
             </Link>
@@ -143,13 +141,17 @@ const styles = StyleSheet.create({
   category: {
     width: 100,
     alignItems: "center",
+    marginTop: 16,
     marginBottom: 16,
+    marginHorizontal: 10,
+    borderRadius: 30,
+    borderColor: "#003366",
+    borderWidth: 1,
+    padding: 10,
   },
   categoryImage: {
     width: 60,
     height: 60,
-    borderRadius: 30,
-    marginBottom: 8,
   },
   categoryText: {},
   badgeContainer: {

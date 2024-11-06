@@ -24,9 +24,7 @@ const renderItem: ListRenderItem<Order> = ({ item }) => (
           <Text style={styles.orderDetails}>{item.details}</Text>
           <Text style={styles.orderDate}>{item.date}</Text>
         </View>
-        <View
-          style={(styles.statusBadge, styles[`statusBadge_${item.status}`])}
-        >
+        <View style={styles.statusBadge}>
           <Text style={styles.statusText}>
             {statusDisplayText[item.status]}
           </Text>
@@ -88,18 +86,6 @@ const styles = StyleSheet.create({
   statusText: {
     fontSize: 12,
     fontWeight: "bold",
-    color: "#fff",
-  },
-  statusBadge_Pending: {
-    backgroundColor: "#ffcc00",
-  },
-  statusBadge_Completed: {
-    backgroundColor: "#4caf50",
-  },
-  statusBadge_Shipped: {
-    backgroundColor: "#2196f3",
-  },
-  statusBadge_InTransit: {
-    backgroundColor: "#ff9800",
+    color: "rgb(0,0,0)",
   },
 });

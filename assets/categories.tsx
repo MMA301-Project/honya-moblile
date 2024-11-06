@@ -24,12 +24,10 @@ export const CATEGORIES: Category[] = [
     products: PRODUCTS.filter((product) => product.category.slug === "gaming"),
   },
   {
-    name: "Accessories",
-    slug: "accessories",
+    name: "Musics",
+    slug: "musics",
     imageUrl:
       "https://images.pexels.com/photos/577769/pexels-photo-577769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    products: PRODUCTS.filter(
-      (product) => product.category.slug === "accessories"
-    ),
+    products: PRODUCTS.filter((product) => product.category.slug === "musics"),
   },
 ];
